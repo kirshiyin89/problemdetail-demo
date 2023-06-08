@@ -7,18 +7,16 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import org.springframework.http.ProblemDetail;
 
 import java.net.URI;
-import java.time.Instant;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
-    ProblemDetail handleBookmarkNotFoundException(ProductNotFoundException e) {
+    ProblemDetail handleProductNotFoundException(ProductNotFoundException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
         problemDetail.setTitle("Product Not Found");
         problemDetail.setType(URI.create("https://myproduct.com/error"));
-        problemDetail.setProperty("errorCategory", "Generic");
-        problemDetail.setProperty("timestamp", Instant.now());
+        problemDetail.setProperty("exception type", "This is a business exception");
         return problemDetail;
     }
 }
