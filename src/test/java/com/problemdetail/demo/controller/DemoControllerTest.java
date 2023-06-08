@@ -21,7 +21,7 @@ class DemoControllerTest {
 
     @Test
     void shouldReturnCustomErrorMessage() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8080/products/10")).andDo(print()).andExpect(status().isNotFound())
+        this.mockMvc.perform(get("http://localhost:8080/product/10")).andDo(print()).andExpect(status().isNotFound())
                 .andExpect(content().string(containsString("Product with id 10 was not found!")));
     }
 

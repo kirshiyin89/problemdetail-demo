@@ -16,7 +16,7 @@ public class DemoService {
         this.productRepository = productRepository;
     }
 
-    public Optional<Product> getProductById(long id) {
+    public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
 }
